@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blind Assistance Object Detection</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Blind Assistance Object Detection</h1>
+
+  <div class="controls">
+    <label><input type="radio" name="source" value="laptop" checked> Laptop Cam</label>
+    <label><input type="radio" name="source" value="phone"> Phone (IP Webcam)</label>
+    <input id="phoneUrl" type="text" placeholder="http://192.168.1.77:8080" />
+    <button id="connectBtn" >Connect</button>
+  </div>
+
+  <!-- Laptop camera -->
+  <video id="webcam" width="640" height="480" autoplay playsinline muted></video>
+
+  <!-- Phone camera path: MJPEG -> <img> -> draw to <canvas> -->
+  <img id="ipImage" style="display:none;" crossorigin="anonymous" />
+  <canvas id="phoneCanvas" width="640" height="480" style="display:none;"></canvas>
+
+  <div id="alert"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <script src="script.js"></script>
+</body>
+</html>
